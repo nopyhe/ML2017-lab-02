@@ -537,42 +537,80 @@ Adam:
 
 \subsubsection{Result}
 
-I plot both logistic regression and linear classification. 
+I plot both logistic regression and linear classification performance. 
 Fig~\ref{fig:logistic_regression_loss_with_different_optimization_algorithm} and Fig~\ref{fig:linear_classification_loss_with_different_optimization_algorithm} show the performance of these optimization algorithms. 
-From the convergence speed, all four optimization algorithms are better than MSGD, and the Adam Algorithm is the best. 
+From the convergence speed, all four optimization algorithms are better than MSGD, and Adam is the best. 
 
 Compare Fig~\ref{fig:logistic_regression_loss_with_different_optimization_algorithm} and Fig~\ref{fig:linear_classification_loss_with_different_optimization_algorithm}, we can find that the performance is different with different model. 
 In logistic regression, RMSProp is better than NAG. 
 However, in linear classification, NAG is better than RMSprop.
 Moreover, we can also find that the performance of linear classification is better than logistic regression.
 
+Fig~\ref{fig:logistic_regression_accuracy_with_different_optimization_algorithm} is the classification accuracy rate of logistic regression varies with the number of iterations graph. We also can find that as the number of iterations increases, the classification accuracy of each optimization algorithm continues to increase. And, Adam is the best performing optimization algorithm.
+
 
 \begin{figure}[!hbt]
     \begin{center}
     \includegraphics[width=\columnwidth]{logistic_regression_loss_with_different_optimization_algorithm}
-    \caption{The curves of the logistic regression loss function with different optimization algorithm. $Batch\_size=4096$ and $\alpha=0.01$.}
+    \caption{The curves of the logistic regression loss function with different optimization algorithms. $Batch\_size=4096$ and $\alpha=0.01$.}
     \label{fig:logistic_regression_loss_with_different_optimization_algorithm}
     \end{center}
 \end{figure}
 
 \begin{figure}[!hbt]
     \begin{center}
+    \includegraphics[width=\columnwidth]{logistic_regression_accuracy_with_different_optimization_algorithm}
+    \caption{The curves of the logistic regression accuracy rate with different optimization algorithms. $Batch\_size=4096$ and $\alpha=0.01$.}
+    \label{fig:logistic_regression_accuracy_with_different_optimization_algorithm}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!hbt]
+    \begin{center}
     \includegraphics[width=\columnwidth]{linear_classification_loss_with_different_optimization_algorithm}
-    \caption{The curves of the linear classification loss function with different optimization algorithm. $Batch\_size=4096$ and $\alpha=0.001$.}
+    \caption{The curves of the linear classification loss function with different optimization algorithms. $Batch\_size=4096$ and $\alpha=0.001$.}
     \label{fig:linear_classification_loss_with_different_optimization_algorithm}
     \end{center}
 \end{figure}
 
-I also plot linear classification with different batch size.
-From Fig~\ref{fig:linear_classification_loss_with_different_batch_size} we can find that the smaller batch, the greater the loss function shock. So when we train a machine learning model, we need to select an appropriate batch size.
+I also plot both logistic regression and linear classification with different batch sizes.
+From Fig~\ref{fig:logistic_regression_loss_with_different_batch_size}, Fig~\ref{fig:logistic_regression_accuracy_with_different_batch_size}, Fig~\ref{fig:linear_classification_loss_with_different_batch_size} and Fig~\ref{fig:linear_classification_accuracy_with_different_batch_size}  we can find that the smaller batch, the greater the loss function shock. And too small batch sizes may not fit well. So when we train a machine learning model, we need to select an appropriate batch size.
+
+
+
+\begin{figure}[!hbt]
+    \begin{center}
+    \includegraphics[width=\columnwidth]{logistic_regression_loss_with_different_batch_size}
+    \caption{The curves of the logistic regression loss function with MBGD with different batch sizes. $\alpha=0.01$}
+    \label{fig:logistic_regression_loss_with_different_batch_size}
+    \end{center}
+\end{figure}
+
+\begin{figure}[!hbt]
+    \begin{center}
+    \includegraphics[width=\columnwidth]{logistic_regression_accuracy_with_different_batch_size}
+    \caption{The curves of the logistic regression accuracy rate with MBGD with different batch sizes. $\alpha=0.01$}
+    \label{fig:logistic_regression_accuracy_with_different_batch_size}
+    \end{center}
+\end{figure}
+
 
 \begin{figure}[!hbt]
     \begin{center}
     \includegraphics[width=\columnwidth]{linear_classification_loss_with_different_batch_size}
-    \caption{The curves of the linear classification loss function with different batch size. $\alpha=0.01$}
+    \caption{The curves of the linear classification loss function with MBGD with different batch sizes. $\alpha=0.01$}
     \label{fig:linear_classification_loss_with_different_batch_size}
     \end{center}
 \end{figure}
+
+\begin{figure}[!hbt]
+    \begin{center}
+    \includegraphics[width=\columnwidth]{linear_classification_accuracy_with_different_batch_size}
+    \caption{The curves of the linear classification accuracy rate with MBGD with different batch sizes. $\alpha=0.01$}
+    \label{fig:linear_classification_accuracy_with_different_batch_size}
+    \end{center}
+\end{figure}
+
 
 
 
@@ -648,8 +686,9 @@ From Fig~\ref{fig:linear_classification_loss_with_different_batch_size} we can f
 
 	% This section summarizes the paper. In our experiments, you can also write your gains and inspirations in here.
     Through this experiment, I understood the difference between gradient descent and stochastic gradient descent. Stochastic gradient descent uses only a small size of data for training, which accelerates the training process. However, if the data size of each batch is too small, there will be a big shock, or even can not converge.
-    I also found that SVM as a classifier works better than logistic regression.
-    At the same time, I implemented four gradient descent optimization algorithms that make me understand gradient descent better.
+    I also found that SVM as a classifier perform better than logistic regression.
+    At the same time, I implemented four gradient descent optimization algorithms. I found that an optimization algorithm may perform differently on different models.
+    And Adam performed well on both models. These processes make me understand gradient descent better.
 
 
 % Your document ends here!
